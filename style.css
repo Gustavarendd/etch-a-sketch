@@ -1,11 +1,25 @@
 body {
   display: flex;
   flex-direction: column;
+  align-content: space-evenly;
+}
+
+.title {
+  text-align: center;
 }
 
 .container {
   display: flex;
+  justify-content: center;
+  gap: 50px;
 }
+
+.btns {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .drawingBoard {
   display: grid;
   background-color: gray;
@@ -16,4 +30,12 @@ body {
   border-style: solid;
   border-color: black;
   border-width: 1px;
+}
+
+.black {
+  background-color: black;
+}
+
+.cc {
+  text-align: center;
 }
