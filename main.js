@@ -1,5 +1,5 @@
 const drawingBoard = document.getElementById("drawingBoard");
-let rows = document.getElementsByClassName(".gridRow");
+let grid = document.getElementsByClassName(".grid");
 let columns = document.getElementsByClassName(".columns");
 
 function btnClick() {
@@ -7,7 +7,8 @@ function btnClick() {
   btnChoice.forEach((btn) =>
     btn.addEventListener("click", () => {
       if (btn.id) {
-        createRows(gridSize(btn.id));
+        removeGrid();
+        createGrid(gridSize(btn.id));
       }
     })
   );
@@ -23,12 +24,21 @@ function gridSize(size) {
   }
 }
 
-function createRows(num) {
-  for (let i = 0; i < num; i++) {
+function createGrid(num) {
+  for (let i = 0; i < num * num; i++) {
     let row = document.createElement("div");
-    drawingBoard.appendChild(row).className = "gridRow";
+    drawingBoard.appendChild(row).className = "grid";
   }
+  drawingBoard.style.setProperty(
+    "grid-template-columns",
+    `repeat(${num}, 2fr)`
+  );
+  drawingBoard.style.setProperty("grid-template-rows", `repeat(${num}, 2fr)`);
 }
 
-function createColumns(num) {}
+function removeGrid() {
+  while (drawingBoard.firstChild) {
+    drawingBoard.removeChild(drawingBoard.firstChild);
+  }
+}
 btnClick();
